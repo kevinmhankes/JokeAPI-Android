@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
  */
 
 /**
-* A base class to extend for all of our database instrumented tests on the VelocityDatabase.
+* A base class to extend for all of our database instrumented tests on the AppDatabase.
 * Provides the initialization and closing of an in memory database.
 * Access the database in subclass test methods via the [database] property.
 */
