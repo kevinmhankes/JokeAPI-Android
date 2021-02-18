@@ -8,6 +8,4 @@
     <color name="secondary_dark">#006978</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#eeeeee</color>
-    <color name="background_night">#212121</color>
 </resources>
