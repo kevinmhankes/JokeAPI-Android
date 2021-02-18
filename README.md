@@ -1,6 +1,9 @@
 # JokeAPI-Android
 This is an app using Android Architecture Components with Koin as a replacement for Dagger Hilt dependency injection.
 
+NOTE: I have filtered the joke results to not return any jokes that are nsfw, religious, political, racist, sexist, or explicit.
+The jokes should be appropriate, but there is a chance something slipped through the API's filters. This is your warning.
+
 ## Introduction
 
 ### Functionality
