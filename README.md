@@ -78,6 +78,7 @@ Libraries Used
   * Continue building out the test framework to allow for even greater coverage
   * Include Test Coverage reports from Jacoco to ensure coverage
   * Implement refresh and scroll-down-to-refresh for a better user experience
+  * Utilize Material design and adjust the theme and styles so there are less styles in any given layout file and are in a theme instead
   * Continue tweaking the UI to more of a polished look
   * Introduce some animations around the delivery of the joke (it's supposed to be funny, why not enhance it with some cool graphics and animations?)
   * Add the ability to favorite and save jokes to the local database (or Firebase potentially)
