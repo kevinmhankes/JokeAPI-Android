@@ -19,6 +19,8 @@
         android:layout_marginEnd="@dimen/card_side_margin"
         android:layout_marginBottom="@dimen/card_bottom_margin"
         android:onClick="@{clickListener}"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="@dimen/cardview_default_elevation">
 
         <TextView

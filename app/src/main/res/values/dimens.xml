@@ -3,7 +3,10 @@
 
     <dimen name="card_side_margin">12dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
-    <dimen name="card_bottom_margin">26dp</dimen>
+    <dimen name="card_bottom_margin">6dp</dimen>
     <dimen name="progress_bar_height">4dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="margin_bottom_category">128dp</dimen>
+    <dimen name="margin_bottom_setup">72dp</dimen>
 
 </resources>
