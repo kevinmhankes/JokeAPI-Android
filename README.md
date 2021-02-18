@@ -80,6 +80,7 @@ Libraries Used
 * Hypothetical next steps given more time:
   * Continue building out the test framework to allow for even greater coverage
   * Include Test Coverage reports from Jacoco to ensure coverage
+  * Create Github Actions to automate CI/CD for building, testing, releasing
   * Implement refresh and scroll-down-to-refresh for a better user experience
   * Utilize Material design and adjust the theme and styles so there are less styles in any given layout file and are in a theme instead
   * Continue tweaking the UI to more of a polished look
