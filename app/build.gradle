@@ -1,0 +1,159 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-allopen'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+allOpen {
+    // allows for mocking classes without directly opening them for release builds
+    // see the two different versions of this class in the debug and release java src folders
+    annotation 'io.github.kevinmhankes.jokeapi.testing.OpenClass'
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    defaultConfig {
+        applicationId "io.github.kevinmhankes.jokeapi"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "io.github.kevinmhankes.jokeapi.MainTestRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        // https://developer.android.com/jetpack/androidx/releases/room#compiler-options
+                        "room.incremental": "true"
+                ]
+            }
+        }
+    }
+
+    testOptions {
+        animationsDisabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.javaCompatibilityVersion
+        targetCompatibility rootProject.javaCompatibilityVersion
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Android Fragment Components + Testing
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragmentVersion"
+
+    // Android Lifecycle Components
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+
+    // Android Material Components
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    // General Android Components
+    implementation "androidx.annotation:annotation:$rootProject.annotationVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.androidLegacySupportVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+
+    // Gson Components
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // Koin Components + Testing
+    // Use version 2.1.6 due to an issue with testing mocked view models
+    // See https://github.com/InsertKoinIO/koin/issues/936
+    implementation "org.koin:koin-android:$rootProject.koinVersion"
+    implementation "org.koin:koin-androidx-scope:$rootProject.koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$rootProject.koinVersion"
+    androidTestImplementation("org.koin:koin-test:$rootProject.koinVersion") {
+        exclude group: 'org.mockito'
+    }
+
+    // Kotlin Components
+    implementation "androidx.core:core-ktx:$rootProject.coreVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlinVersion"
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    // OkHttp3 Components + Testing
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.okhttp3Version"
+
+    // Retrofit Components
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    // Room Components + Testing
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    // Timber Components
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // Android Core Testing Components
+    testImplementation "androidx.arch.core:core-testing:$rootProject.androidCoreTestingVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.androidCoreTestingVersion"
+
+    // Espresso Testing Components
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+    // Mockito Kotlin Testing Components
+    // Stick with 2.x mockito versions due to
+    // See https://github.com/mockito/mockito/issues/1716
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.mockitoKotlinVersion"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.mockitoKotlinVersion"
+
+    // Mockito Testing Components
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockitoVersion"
+
+    // Testing Components
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    configurations.all {
+        resolutionStrategy.force "junit:junit:$rootProject.junitVersion"
+    }
+    androidTestImplementation "androidx.test:core-ktx:$rootProject.androidTestCoreKtxVersion"
+    androidTestImplementation "androidx.test:rules:$rootProject.androidTestRulesVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.androidTestRunnerVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidTestExtJunitVersion"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
+}

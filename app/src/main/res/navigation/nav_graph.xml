@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/joke_list_fragment">
+    <fragment
+        android:id="@+id/joke_list_fragment"
+        android:name="io.github.kevinmhankes.jokeapi.ui.fragment.JokeListFragment"
+        android:label="Joke Setup"
+        tools:layout="@layout/joke_list_fragment">
+        <action
+            android:id="@+id/action_joke_list_fragment_to_joke_detail_fragment"
+            app:destination="@id/joke_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joke_detail_fragment"
+        android:name="io.github.kevinmhankes.jokeapi.ui.fragment.JokeDetailFragment"
+        android:label="Joke Punchline"
+        tools:layout="@layout/joke_detail_fragment">
+        <argument
+            android:name="jokeId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
