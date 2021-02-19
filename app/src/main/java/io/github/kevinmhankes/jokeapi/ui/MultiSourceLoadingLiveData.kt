@@ -8,12 +8,14 @@ import io.github.kevinmhankes.jokeapi.api.util.Status
 /**
  * @author Kevin.
  * Created/Modified on February 17, 2021
+ * Adapted from this StackOverflow question:
+ * https://stackoverflow.com/questions/49493772/mediatorlivedata-or-switchmap-transformation-with-multiple-parameters
  */
 
 /**
  * A [MediatorLiveData] object that takes in a list of [LiveData] [Resource] sources and emits
  * a boolean loading status value. The loading value is true if the source status
- * are [Status.LOADING]. The new result value is only emitted if it differs from the current value.
+ * is [Status.LOADING]. The new result value is only emitted if it differs from the current value.
  *
  * When using this class, you should not manually [setValue] or [addSource].
  *

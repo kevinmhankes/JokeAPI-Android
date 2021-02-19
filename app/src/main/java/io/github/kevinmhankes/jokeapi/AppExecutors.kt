@@ -1,3 +1,20 @@
+
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.github.kevinmhankes.jokeapi
 
 import android.os.Handler
@@ -6,20 +23,10 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 /**
- * @author Kevin.
- * Created/Modified on February 14, 2021
- */
-
-/**
  * Global executor pools for the whole application.
  *
  * Grouping tasks like this avoids the effects of task starvation (e.g. disk reads don't wait
  * behind webservice requests)
- *
- * In my original implentation of this app, I had begun using the new experimental Kotlin coroutines
- * and some other nifty features that seem like they will make this class obsolete in the near future.
- *
- * I am looking forward to learning more about those and their capabilities
  */
 open class AppExecutors(
     private val diskIO: Executor,
